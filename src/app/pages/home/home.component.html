@@ -1,0 +1,46 @@
+<h1>Üdvözöl a PharmaWeb!</h1>
+
+<!-- Keresőmező gyógyszerekhez -->
+<mat-form-field appearance="fill" class="search-field">
+  <mat-label>Gyógyszer keresése</mat-label>
+  <input matInput placeholder="Pl.: Algopyrin, NeoCitran">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+<!-- Kategóriaválasztó -->
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Kategória</mat-label>
+  <mat-select>
+    <mat-option value="fajdalomcsillapito">Fájdalomcsillapítók</mat-option>
+    <mat-option value="megfazas">Megfázás elleni szerek</mat-option>
+    <mat-option value="vitaminok">Vitaminok</mat-option>
+    <mat-option value="egyeb">Egyéb</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!-- Akciós termék kártya -->
+<mat-card class="promo-card">
+  <mat-card-header>
+    <mat-card-title>Algopyrin 500mg</mat-card-title>
+    <mat-card-subtitle>Most csak 999 Ft!</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="" alt="Algopyrin kép">
+  <mat-card-content>
+    <p>Gyors hatású fájdalomcsillapító, fejfájás, láz csillapítására.</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" matBadge="Új" matBadgeColor="warn">Kosárba</button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- Hírlevél feliratkozás -->
+<mat-card class="newsletter-card">
+  <mat-card-title>Ne maradj le az akciókról!</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email címed</mat-label>
+      <input matInput type="email" placeholder="email@example.com">
+    </mat-form-field>
+    <button mat-flat-button color="accent">Feliratkozás</button>
+  </mat-card-content>
+</mat-card>
+
