@@ -1,6 +1,6 @@
 <div class="product-card">
     <h3>{{ product.name }}</h3>
-  
+    <!--egyik vezérlési folyamat-->
     <p *ngIf="product.quantity > 0; else outOfStock">
       <strong>Készleten:</strong> {{ product.quantity }} db
     </p>

@@ -11,7 +11,7 @@ import { HighlightDirective } from '../../../highlight.directive';
 })
 
 export class ProductItemComponent {
-  
+  //szülő gyermek komponens kapcsolat
   @Input() product!: Product;
   @Output() addToCart = new EventEmitter<Product>();
 
