@@ -47,3 +47,25 @@ mat-card-actions {
 button {
   margin-top: 5px;
 }
+
+@media (max-width: 955px) {
+  .search-field {
+    position: static;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  :host {
+    padding: 10px;
+  }
+
+  mat-form-field, mat-card {
+    max-width: 90%;
+  }
+
+  mat-card img {
+    height: auto;
+    max-height: 150px;
+  }
+}

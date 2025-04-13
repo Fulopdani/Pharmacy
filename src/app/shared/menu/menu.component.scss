@@ -8,15 +8,30 @@ ul {
     list-style: none;
     font-weight: bold;
     align-items: center;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    gap: 200px;
-    height: 40px;
-
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 100px;
+    height: 60px;
+    flex-wrap: wrap;
 }
 
 a {
     text-decoration: none;
     color: white;
     font-size: 20px;
+}
+
+
+@media (max-width: 768px) {
+    ul {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    a {
+        font-size: 18px;
+    }
 }
