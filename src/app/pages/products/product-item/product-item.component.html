@@ -9,7 +9,7 @@
       <p class="out-of-stock">Elfogyott</p>
     </ng-template>
   
-    <button class="btn" [disabled]="!product.inStock" (click)="onAddToCart()">
+    <button class="btn" [disabled]="!product.inStock" (click)="onAddToCart()" appHighlight>
       Kosárba
     </button>
   </div>

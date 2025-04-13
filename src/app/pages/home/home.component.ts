@@ -10,14 +10,17 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { HighlightDirective } from '../../highlight.directive';
+import { GrowOnHoverDirective } from '../../grow-on-hover.directive';
 @Component({
   selector: 'app-home',
   imports: [MatFormFieldModule, MatInputModule, MatIcon, MatIconModule, MatCheckboxModule, MatRadioModule, MatSelectModule,
-            MatButtonToggleModule, MatSliderModule, MatCardModule, MatProgressBarModule,],
+            MatButtonToggleModule, MatSliderModule, MatCardModule, MatProgressBarModule, HighlightDirective, GrowOnHoverDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
 export class HomeComponent {
+
 
 }
