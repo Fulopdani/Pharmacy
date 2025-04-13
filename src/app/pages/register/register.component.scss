@@ -1,0 +1,24 @@
+form, h2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+button{
+  align-self: center; /* Gomb középre */
+}
+
+/* Mobilnézet */
+@media (max-width: 600px) {
+  form {
+    padding: 8px;
+    max-width: 90%;
+  }
+}
