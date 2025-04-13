@@ -13,7 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, MatFormFieldModule, MatInputModule, MatIcon, MatIconModule, MatCheckboxModule, MatRadioModule, MatSelectModule,
+  imports: [MatFormFieldModule, MatInputModule, MatIcon, MatIconModule, MatCheckboxModule, MatRadioModule, MatSelectModule,
             MatButtonToggleModule, MatSliderModule, MatCardModule, MatProgressBarModule,],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
