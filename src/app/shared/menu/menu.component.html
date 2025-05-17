@@ -2,7 +2,15 @@
     <ul>
         <li><a routerLink="/home">home</a></li>
         <li><a routerLink="/products">products</a></li>
-        <li><a routerLink="/login">login</a></li>
-        <li><a routerLink="/register">register</a></li>
+        <li><a routerLink="/cart">cart</a></li>
+        @if (!isLoggedIn){
+          <li><a routerLink="/login">login</a></li>
+        }
+        @if (isLoggedIn){
+          <li><a routerLink="/profile">profile</a></li>
+        }
+        @if (isLoggedIn) {
+          <li><a href="#" (click)="$event.preventDefault(); logout()">logout</a></li>
+        }
     </ul>
 </nav>

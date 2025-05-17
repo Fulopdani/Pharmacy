@@ -1,19 +1,36 @@
-<!--[formGroup]="form" (ngLogin)="onLogin()"-->
-<form>
+<div class="login-container">
+    <h1>Bejelentkezés</h1>
     
-    <h2>Bejelentkezés</h2>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Írd be az emailed">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Jelszó</mat-label>
-        <input matInput type="password" placeholder="Írd be a jelszavad">
-    </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Bejelentkezés</button>
-    <button mat-raised-button color="accent" routerLink="/register">Még nem vagy regisztrálva?</button>
-
-</form>
+    @if (isLoading) {
+      <div class="loading-container">
+        <h2>Bejelentkezés folyamatban</h2>
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Kérlek várj...</p>
+      </div>
+    }
+  
+    @if (showLoginForm) {
+      <form (ngSubmit)="login()" class="login-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [formControl]="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Jelszó</mat-label>
+          <input matInput type="password" [formControl]="password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+    
+        @if (loginError) {
+          <div class="error-message">
+            {{ loginError }}
+          </div>
+        }
+    
+        <button mat-flat-button color="primary" type="submit">Bejelentkezés</button>
+        <button mat-flat-button [routerLink]="['/register']">Még nincs fiókod?</button>
+      </form>
+    }
+  </div>

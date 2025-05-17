@@ -1,18 +1,52 @@
-<form>
-  <h2>Regisztráció</h2>
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Email</mat-label>
-    <input matInput placeholder="Írd be az emailed">
-  </mat-form-field>
+<div class="signup-container">
+    <h1>Regisztráció</h1>
+    
+    @if (isLoading) {
+      <div class="loading-container">
+        <h2>Regisztráció folyamatban</h2>
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Kérlek várj...</p>
+      </div>
+    }
+  
+    @if (showForm) {
+      <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="signup-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Jelszó</mat-label>
-    <input matInput type="password" placeholder="Írd be a jelszavad">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Jelszó újra</mat-label>
-    <input matInput type="passwordAgain" placeholder="Írd be újra a jelszavad">
-  </mat-form-field>
-
-  <button mat-raised-button color="primary">Regisztráció</button>
-</form>
+        <div class="name-row" formGroupName="name">
+          <mat-form-field appearance="outline">
+            <mat-label>Keresztnév</mat-label>
+            <input matInput formControlName="firstname">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Vezetéknév</mat-label>
+            <input matInput formControlName="lastname">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Jelszó</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Jelszó megerősítése</mat-label>
+          <input matInput type="password" formControlName="rePassword">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+  
+        <div class="buttons-row">
+          <button mat-flat-button color="primary" type="submit">Regisztráció</button>
+          <button mat-flat-button [routerLink]="['/login']">Már van fiókod?</button>
+        </div>
+      </form>
+    }
+  </div>
