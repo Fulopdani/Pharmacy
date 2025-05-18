@@ -12,9 +12,11 @@ import {
   Firestore, 
   collection, 
   doc, 
-  setDoc 
+  setDoc, 
+  getDoc,
+  updateDoc
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/Users';
 
@@ -55,6 +57,7 @@ export class AuthService {
         ...userData,
         id: userCredential.user.uid,
         email: email,
+        cart: []
       });
 
       return userCredential;
@@ -66,7 +69,6 @@ export class AuthService {
 
   private async createUserData(userId: string, userData: Partial<User>): Promise<void> {
     const userRef = doc(collection(this.firestore, 'Users'), userId);
-    
     return setDoc(userRef, userData);
   }
   
@@ -77,4 +79,51 @@ export class AuthService {
   updateLoginStatus(isLoggedIn: boolean): void {
     localStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
   }
+
+  // 🛒 Kosár kezelése
+  async addToCart(userId: string, productId: string): Promise<void> {
+    const userRef = doc(this.firestore, 'Users', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data() as User;
+      const updatedCart = [...userData.cart, productId];
+      await updateDoc(userRef, { cart: updatedCart });
+    } else {
+      console.error("User not found.");
+    }
+  }
+
+  async removeFromCart(userId: string, productId: string): Promise<void> {
+    const userRef = doc(this.firestore, 'Users', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data() as User;
+      const updatedCart = userData.cart.filter(item => item !== productId);
+      await updateDoc(userRef, { cart: updatedCart });
+    } else {
+      console.error("User not found.");
+    }
+  }
+
+  async getCart(userId: string): Promise<string[]> {
+    const userRef = doc(this.firestore, 'Users', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data() as User;
+      return userData.cart;
+    } else {
+      console.error("User not found.");
+      return [];
+    }
+  }
+
+  async getUserData(userId: string): Promise<User | null> {
+  const userRef = doc(this.firestore, 'Users', userId);
+  const userSnapshot = await getDoc(userRef);
+  return userSnapshot.exists() ? (userSnapshot.data() as User) : null;
+  }
+
 }

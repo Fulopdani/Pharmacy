@@ -1,16 +1,20 @@
 <div class="product-card">
     <h3>{{ product.name }}</h3>
-    <!--egyik vezérlési folyamat-->
+      <strong>{{ product.price }} Ft</strong>
     <p *ngIf="product.quantity > 0; else outOfStock">
-      <strong>Készleten:</strong> {{ product.quantity }} db
+        <strong>Készleten:</strong> {{ product.quantity }} db
     </p>
   
     <ng-template #outOfStock>
-      <p class="out-of-stock">Elfogyott</p>
+        <p class="out-of-stock">Elfogyott</p>
     </ng-template>
   
-    <button class="btn" [disabled]="!product.inStock" (click)="onAddToCart()" appHighlight>
-      Kosárba
+    <button 
+        class="btn" 
+        [disabled]="product.quantity === 0 || !currentUser" 
+        (click)="onAddToCart()" 
+        appHighlight
+    >
+        Kosárba
     </button>
-  </div>
-  
+</div>

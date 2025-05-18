@@ -1,1 +1,23 @@
-<p>profile works!</p>
+<div class="profile-container" *ngIf="userData">
+  <h1>Üdvözlünk, {{ userData.name.firstname }} {{ userData.name.lastname }}!</h1>
+  
+  <h2>Kosár tartalma:</h2>
+  <h3> <button class="delete-profile-btn" [routerLink]="['/profiledelete']" routerLinkActive="router-link-active" >Profil törlése</button></h3>
+  
+  <div class="cart-items" *ngIf="userData.cart.length > 0; else emptyCart">
+    <ul>
+      <li *ngFor="let item of userData.cart">
+        Termék ID: {{ item }}
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #emptyCart>
+    <p>A kosarad üres.</p>
+  </ng-template>
+
+</div>
+
+<ng-template #noUser>
+  <p>Kérlek jelentkezz be a profilod megtekintéséhez.</p>
+</ng-template>

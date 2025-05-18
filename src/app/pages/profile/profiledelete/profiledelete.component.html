@@ -1,0 +1,11 @@
+<div class="delete-profile-container">
+  <h2>Biztosan törölni szeretnéd a profilodat?</h2>
+  <p>Ez a művelet nem visszavonható.</p>
+
+  <button class="confirm-btn" (click)="deleteProfile()">
+    Profil törlése
+  </button>
+  <button class="cancel-btn" [routerLink]="['/profile']">
+    Mégsem
+  </button>
+</div>

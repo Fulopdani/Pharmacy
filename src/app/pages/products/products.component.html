@@ -2,12 +2,10 @@
   <h2>Elérhető gyógyszerek</h2>
 
   <div class="products-grid">
-    <!--másik vezérlési folyamat-->
-    @for (product of products; track product.id) {
-      <app-product-item
-        [product]="product"
-        (addToCart)="handleAddToCart($event)"
-      />
-    }
+    <app-product-item
+      *ngFor="let product of products; trackBy: trackBy"
+      [product]="product"
+      (addToCart)="handleAddToCart($event)"
+    ></app-product-item>
   </div>
 </div>

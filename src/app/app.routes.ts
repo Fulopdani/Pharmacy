@@ -27,9 +27,16 @@ export const routes: Routes = [
         path:'register',
         loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent),
     },
+
     {
         path:'profile',
         loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent),
+        canActivate:[authGuard]
+    },
+
+    {
+        path:'profiledelete',
+        loadComponent: () => import('./pages/profile/profiledelete/profiledelete.component').then(m => m.ProfiledeleteComponent),
         canActivate:[authGuard]
     },
 
