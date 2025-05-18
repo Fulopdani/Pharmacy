@@ -30,14 +30,11 @@ export class ProfiledeleteComponent {
     if (!this.currentUser) return;
 
     try {
-      // 1. Felhasználó törlése Firestore-ból
       const userRef = doc(this.firestore, 'Users', this.currentUser.uid);
       await deleteDoc(userRef);
 
-      // 2. Felhasználó törlése az Authentication-ből
       await deleteUser(this.currentUser);
 
-      // 3. Kijelentkeztetés és átirányítás
       this.authService.updateLoginStatus(false);
       this.router.navigateByUrl('/home');
       console.log('Felhasználói fiók törölve.');

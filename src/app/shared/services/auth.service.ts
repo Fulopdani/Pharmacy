@@ -80,7 +80,6 @@ export class AuthService {
     localStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
   }
 
-  // 🛒 Kosár kezelése
   async addToCart(userId: string, productId: string): Promise<void> {
     const userRef = doc(this.firestore, 'Users', userId);
     const userDoc = await getDoc(userRef);
