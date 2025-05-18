@@ -69,6 +69,7 @@ export class RegisterComponent {
         lastname: this.signUpForm.value.name?.lastname || ''
       },
       email: this.signUpForm.value.email || '',
+      cart: []
     };
 
     const email = this.signUpForm.value.email || '';
