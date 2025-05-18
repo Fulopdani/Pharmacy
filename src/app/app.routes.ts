@@ -9,11 +9,6 @@ export const routes: Routes = [
     },
 
     {
-        path: 'cart',
-        loadComponent: () => import('./pages/cart/cart.component').then(m => m.CartComponent),
-    },
-
-    {
         path: 'products',
         loadComponent: () => import('./pages/products/products.component').then(m => m.ProductsComponent),
         
